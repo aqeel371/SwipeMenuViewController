@@ -3,6 +3,7 @@ import UIKit
 final class TabItemView: UIView {
 
     private(set) var titleLabel: UILabel = UILabel()
+    private(set) var titleImage: UIImageView = UIImageView()
 
     public var textColor: UIColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
     public var selectedTextColor: UIColor = .white
@@ -11,8 +12,10 @@ final class TabItemView: UIView {
         didSet {
             if isSelected {
                 titleLabel.textColor = selectedTextColor
+                titleImage.tintColor = selectedTextColor
             } else {
                 titleLabel.textColor = textColor
+                titleImage.tintColor = textColor
             }
         }
     }
@@ -20,7 +23,8 @@ final class TabItemView: UIView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        setupLabel()
+        setupImage()
+//        setupLabel()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -37,8 +41,15 @@ final class TabItemView: UIView {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1.0)
         titleLabel.backgroundColor = UIColor.clear
+        
         addSubview(titleLabel)
         layoutLabel()
+    }
+    private func setupImage() {
+        titleImage = UIImageView(frame: bounds)
+        
+        addSubview(titleImage)
+        layoutImage()
     }
 
     private func layoutLabel() {
@@ -49,6 +60,16 @@ final class TabItemView: UIView {
             titleLabel.widthAnchor.constraint(equalTo: self.widthAnchor),
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+        ])
+    }
+    private func layoutImage() {
+
+        titleImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleImage.widthAnchor.constraint(equalToConstant: 35.0),
+            titleImage.heightAnchor.constraint(equalToConstant: 35.0),
+            titleImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            titleImage.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }
 }
