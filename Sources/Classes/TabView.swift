@@ -26,6 +26,8 @@ public protocol TabViewDataSource: class {
 
     /// Return strings to be displayed at the tab in `TabView`.
     func tabView(_ tabView: TabView, titleForItemAt index: Int) -> String?
+    
+    func tabView(_ tabView: TabView, imageForItemAt index: Int) -> String?
 }
 
 open class TabView: UIScrollView {
@@ -220,7 +222,12 @@ open class TabView: UIScrollView {
                 tabItemView.textColor = options.itemView.textColor
                 tabItemView.selectedTextColor = options.itemView.selectedTextColor
             }
-
+            if let image = dataSource.tabView(self, imageForItemAt: index) {
+                tabItemView.titleImage.image = UIImage(named: image)
+                tabItemView.textColor = options.itemView.textColor
+                tabItemView.selectedTextColor = options.itemView.selectedTextColor
+            }
+            
             tabItemView.isSelected = index == currentIndex
 
             switch options.style {
