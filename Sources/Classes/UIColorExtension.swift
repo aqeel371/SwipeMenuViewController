@@ -11,7 +11,7 @@ extension UIColor {
         if components.isEmpty || components.count < 3 || toComponents.isEmpty || toComponents.count < 3 {
             return nil
         }
-
+        
         var results: [CGFloat] = []
 
         for index in 0...3 {
