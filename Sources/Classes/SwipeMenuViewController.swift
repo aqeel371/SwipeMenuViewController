@@ -16,9 +16,7 @@ open class SwipeMenuViewController: UIViewController, SwipeMenuViewDelegate, Swi
     open override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
 
-        // potentially nil.
-        // https://forums.developer.apple.com/thread/94426
-        swipeMenuView?.willChangeOrientation()
+        swipeMenuView.willChangeOrientation()
     }
 
     open override func viewDidLayoutSubviews() {
@@ -59,6 +57,9 @@ open class SwipeMenuViewController: UIViewController, SwipeMenuViewDelegate, Swi
     }
 
     open func swipeMenuView(_ swipeMenuView: SwipeMenuView, titleForPageAt index: Int) -> String {
+        return children[index].title ?? ""
+    }
+    open func swipeMenuView(_ swipeMenuView: SwipeMenuView, imageForPageAt index: Int) -> String {
         return children[index].title ?? ""
     }
 
