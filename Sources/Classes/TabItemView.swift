@@ -66,8 +66,8 @@ final class TabItemView: UIView {
 
         titleImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleImage.widthAnchor.constraint(equalToConstant: 35.0),
-            titleImage.heightAnchor.constraint(equalToConstant: 35.0),
+            titleImage.widthAnchor.constraint(equalToConstant: 25.0),
+            titleImage.heightAnchor.constraint(equalToConstant: 25.0),
             titleImage.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             titleImage.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
