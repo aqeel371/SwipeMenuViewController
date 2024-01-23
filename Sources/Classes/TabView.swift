@@ -140,7 +140,6 @@ open class TabView: UIScrollView {
     }
 
     func update(_ index: Int) {
-
         if currentIndex == index { return }
 
         currentIndex = index
