@@ -335,6 +335,16 @@ open class SwipeMenuView: UIView {
         contentScrollView?.update(defaultIndex)
         currentIndex = defaultIndex
 
+        let shadowView = UIView(frame: tabView!.frame)
+        shadowView.backgroundColor = .white
+        shadowView.layer.shadowOpacity = 0.1
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowRadius = 1
+        shadowView.layer.shadowOffset.height = 3
+        
+        self.addSubview(shadowView)
+        
+        self.bringSubviewToFront(tabView!)
         delegate?.swipeMenuView(self, viewDidSetupAt: defaultIndex)
     }
 
